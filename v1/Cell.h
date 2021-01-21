@@ -11,15 +11,14 @@ class Cell
 		double radius; 
 		double birth_rate; 
 		double death_rate; 
-		int state; // 0 = dead , 1 = live 
 		double adhesion_strength; 
 		double max_interaction_distance; 
 		
 		Cell();
 		Cell( Cell& copy_me ); 
 		~Cell(); 
-		bool division( double dt ); 
-		bool death( double dt ); 
+		bool division( void ); 
+		bool death( void ); 
 		bool movement( double dt ); 
 };
 
