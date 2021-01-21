@@ -8,7 +8,6 @@ Cell::Cell()
 	radius = 5.0; 
 	birth_rate = 0.001; 
 	death_rate = 0.00001; 
-	state = 1; 
 	adhesion_strength = 0.1; 
 	max_interaction_distance = 1.5 * radius; 
 
