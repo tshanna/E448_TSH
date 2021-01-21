@@ -13,3 +13,7 @@ Cell.o: Cell.cpp
 	
 clean:
 	rm -f *.o $(output)
+	
+version:
+	cp v$(V)/* . 
+	make
