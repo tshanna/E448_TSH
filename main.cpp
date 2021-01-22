@@ -6,7 +6,7 @@
 #include <cmath>
 
 #include "Cell.h" 
-std::string version = "v2"; 
+std::string version = "v1"; 
 
 int main( int argc, char* argv[] )
 {
@@ -19,18 +19,6 @@ int main( int argc, char* argv[] )
 	// create environment 
 	
 	// place cells 
-	Cell* pCell;
-	pCell = new Cell; 
-	pCell->position[1] = -10; 
-	
-	pCell = new Cell; 
-	pCell->position[1] = 10; 
-	
-	pCell = new Cell; 
-	pCell->position[0] = -10; 
-	
-	pCell = new Cell; 
-	pCell->position[0] = 10; 
 	
 	long double t = 0; 
 	double max_time = 5 * 24 * 60; 
@@ -43,14 +31,12 @@ int main( int argc, char* argv[] )
 		if( fabs(t-next_output_time) < 0.01*dt )
 		{
 			std::cout << t << " of " << max_time << " (min)" << std::endl; 
-			std::cout << "\tCell count: " << all_cells.size() << std::endl; 
 			next_output_time += output_interval; 
 		}
 		
 		// update phenotypes
 		
 		// birth and death 
-		check_for_birth_and_death( dt ); 
 		
 		// update positions 
 		

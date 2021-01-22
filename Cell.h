@@ -2,8 +2,6 @@
 #define __Cell_h__
 
 #include <vector>
-#include <random> 
-#include <ctime>
 
 class Cell
 {
@@ -24,10 +22,6 @@ class Cell
 		bool movement( double dt ); 
 };
 
-extern std::vector<Cell*> all_cells;
-
-double uniform_random( void ); 
-
-bool check_for_birth_and_death( double dt );
+extern std::vector<Cell*> all_cells; 
 
 #endif 
