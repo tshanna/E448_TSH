@@ -5,6 +5,10 @@
 #include <random> 
 #include <ctime>
 
+#include <fstream>
+#include <string>
+#include <iostream>
+
 class Cell
 {
 	private:
@@ -13,8 +17,12 @@ class Cell
 		double radius; 
 		double birth_rate; 
 		double death_rate; 
-		double adhesion_strength; 
+		
+		std::vector<double> velocity; 
+		double mechanics_strength; 
 		double max_interaction_distance; 
+		void mechanics_interaction( Cell* pCell ); 
+		void mechanics_interactions( void );  
 		
 		Cell();
 		Cell( Cell& copy_me ); 
@@ -29,5 +37,10 @@ extern std::vector<Cell*> all_cells;
 long double uniform_random( void ); 
 
 bool check_for_birth_and_death( double dt );
+bool update_mechanics( double dt ); 
+
+std::string output_filename( void );
+bool output( std::string filename ); 
+bool save_data( void ); 
 
 #endif 

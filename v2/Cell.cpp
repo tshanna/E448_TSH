@@ -65,13 +65,13 @@ bool Cell::death( void )
 }
 
 
-double uniform_random()
+long double uniform_random()
 {
 	// create 64-bit Mersenne twister, seed zero
 	// static so it persists between function calls 
 	static std::mt19937_64 generator(0); 
 	
-	// create uniform distribution, static to persists
+	// create uniform distribution, static to persist
 	// between function calls 
 	static std::uniform_real_distribution<> uniform(0.0,1.0);
 	return uniform(generator); 

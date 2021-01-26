@@ -14,6 +14,23 @@ int main( int argc, char* argv[] )
 	
 	// parse settings 
 	
+/*
+	// test 
+	long int number_of_tests  = 500000000; 
+	long int number_of_events = 0;
+	double probability = 1e-7; 
+	long int expectation = (long int) (probability * number_of_tests); 
+	for( int n=0 ; n < number_of_tests ; n++ )
+	{
+		if( uniform_random() <= probability )
+		{ number_of_events++; } 
+	}
+	std::cout << "events: " << number_of_events << " vs " << expectation << std::endl; 
+	std::cout << (long double) number_of_events / (long double) number_of_tests << " vs " << probability << std::endl; 
+	
+	return 0; 
+*/
+	
 	// create cell types 
 	
 	// create environment 

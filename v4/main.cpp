@@ -14,6 +14,23 @@ int main( int argc, char* argv[] )
 	
 	// parse settings 
 	
+/*
+	// test 
+	long int number_of_tests  = 500000000; 
+	long int number_of_events = 0;
+	double probability = 1e-7; 
+	long int expectation = (long int) (probability * number_of_tests); 
+	for( int n=0 ; n < number_of_tests ; n++ )
+	{
+		if( uniform_random() <= probability )
+		{ number_of_events++; } 
+	}
+	std::cout << "events: " << number_of_events << " vs " << expectation << std::endl; 
+	std::cout << (long double) number_of_events / (long double) number_of_tests << " vs " << probability << std::endl; 
+	
+	return 0; 
+*/
+	
 	// create cell types 
 	
 	// create environment 
@@ -34,7 +51,7 @@ int main( int argc, char* argv[] )
 	
 	long double t = 0; 
 	double max_time =  5 * 24 * 60; 
-	double output_interval = 720; 
+	double output_interval = 30; 
 	
 	double next_output_time = 0.0; 
 	double dt = 0.1; 
@@ -45,6 +62,8 @@ int main( int argc, char* argv[] )
 		{
 			std::cout << t << " of " << max_time << " (min)" << std::endl; 
 			std::cout << "\tCell count: " << all_cells.size() << std::endl; 
+			
+			save_data(); 
 			
 			next_output_time += output_interval; 
 		}
