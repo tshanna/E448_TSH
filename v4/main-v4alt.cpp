@@ -8,7 +8,27 @@
 #include "Cell.h" 
 #include "save.h" 
 
-std::string version = "v5"; 
+std::string version = "v4"; 
+
+void change_phenotypes( double t )
+{
+	static bool change_made = false; 
+	if( change_made == true )
+	{ return; } 
+	
+	if( t > 7200 )
+	{
+		for( int n = 0; n < all_cells.size() ; n++ )
+		{
+			all_cells[n]->birth_rate = 0.0; 
+			all_cells[n]->death_rate *= 50.0; 
+		}
+		
+		change_made = true; 
+	}
+	
+	return; 
+}
 
 int main( int argc, char* argv[] )
 {
@@ -35,7 +55,7 @@ int main( int argc, char* argv[] )
 	pCell->position[0] = 1; 
 	
 	long double t = 0; 
-	double max_time =  5 * 24 * 60; 
+	double max_time =  10 * 24 * 60; 
 	double output_interval = 30; 
 	
 	double next_output_time = 0.0; 
@@ -54,6 +74,7 @@ int main( int argc, char* argv[] )
 		}
 		
 		// update phenotypes
+		change_phenotypes(t); 
 		
 		// birth and death 
 		check_for_birth_and_death( dt ); 

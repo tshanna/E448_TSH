@@ -8,7 +8,7 @@
 #include "Cell.h" 
 #include "save.h" 
 
-std::string version = "v5"; 
+std::string version = "v4"; 
 
 int main( int argc, char* argv[] )
 {
