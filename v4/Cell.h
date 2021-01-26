@@ -39,8 +39,4 @@ long double uniform_random( void );
 bool check_for_birth_and_death( double dt );
 bool update_mechanics( double dt ); 
 
-std::string output_filename( void );
-bool output( std::string filename ); 
-bool save_data( void ); 
-
 #endif 

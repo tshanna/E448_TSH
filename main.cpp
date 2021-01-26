@@ -6,7 +6,9 @@
 #include <cmath>
 
 #include "Cell.h" 
-std::string version = "v3"; 
+#include "save.h" 
+
+std::string version = "v4"; 
 
 int main( int argc, char* argv[] )
 {
@@ -34,7 +36,7 @@ int main( int argc, char* argv[] )
 	
 	long double t = 0; 
 	double max_time =  5 * 24 * 60; 
-	double output_interval = 720; 
+	double output_interval = 30; 
 	
 	double next_output_time = 0.0; 
 	double dt = 0.1; 
@@ -45,6 +47,8 @@ int main( int argc, char* argv[] )
 		{
 			std::cout << t << " of " << max_time << " (min)" << std::endl; 
 			std::cout << "\tCell count: " << all_cells.size() << std::endl; 
+			
+			save_data(); 
 			
 			next_output_time += output_interval; 
 		}
