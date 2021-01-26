@@ -1,15 +1,18 @@
 GCC := g++ # macOS users need their compiler here
+CFLAGS := -std=C++11 -m64
+
+CC := $(GCC) $(CFLAGS)
 
 output := model 
 
 all: main.o Cell.o 
-	$(GCC) -o $(output) main.o Cell.o
+	$(CC) -o $(output) main.o Cell.o
 
 main.o: main.cpp
-	$(GCC) -c main.cpp 
+	$(CC) -c main.cpp 
 
 Cell.o: Cell.cpp
-	$(GCC) -c Cell.cpp
+	$(CC) -c Cell.cpp
 	
 clean:
 	rm -f *.o $(output)
