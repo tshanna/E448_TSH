@@ -31,3 +31,4 @@
 *.out
 *.app
 data/.ipynb_checkpoints/ABM_visualization-checkpoint.ipynb
+*.csv

@@ -1,5 +1,5 @@
 GCC := g++ # macOS users need their compiler here
-CFLAGS := -std=C++11 -m64
+CFLAGS := -std=c++11 -m64
 
 CC := $(GCC) $(CFLAGS)
 
