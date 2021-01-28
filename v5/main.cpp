@@ -7,8 +7,9 @@
 
 #include "Cell.h" 
 #include "save.h" 
+#include "environment.h" 
 
-std::string version = "v4"; 
+std::string version = "v5"; 
 
 int main( int argc, char* argv[] )
 {
@@ -20,6 +21,18 @@ int main( int argc, char* argv[] )
 	
 	// create environment 
 	
+	environment.set_domain( {-140.0,140.0,-140.0,140.0} ); 
+	environment.set_shape( {15,15} ); 
+	for( int j = 0 ; j < environment.shape[1] ; j++ )
+	{
+		for( int i = 0 ; i < environment.shape[0] ; i++ )
+		{
+			environment(i,j) = 1.0 + 0.00001 * uniform_random(); 
+		}
+	}
+	
+	std::cout << "suggested dt: " << environment.suggest_dt() << std::endl; 
+	
 	// place cells 
 	Cell* pCell;
 	pCell = new Cell; 
@@ -30,10 +43,11 @@ int main( int argc, char* argv[] )
 	
 	pCell = new Cell; 
 	pCell->position[0] = -1; 
+
 	
 	pCell = new Cell; 
 	pCell->position[0] = 1; 
-	
+
 	long double t = 0; 
 	double max_time =  5 * 24 * 60; 
 	double output_interval = 30; 
@@ -52,6 +66,8 @@ int main( int argc, char* argv[] )
 			
 			next_output_time += output_interval; 
 		}
+		
+		// update environment 
 		
 		// update phenotypes
 		

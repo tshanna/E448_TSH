@@ -10,6 +10,7 @@
 #include <iostream>
 
 #include "Cell.h" 
+#include "Environment.h" 
 
 std::string output_filename( void );
 bool output( std::string filename ); 
