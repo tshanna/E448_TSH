@@ -75,7 +75,6 @@ bool Cell::death( void )
 	return true; 
 }
 
-
 long double uniform_random()
 {
 	// create 64-bit Mersenne twister, seed zero

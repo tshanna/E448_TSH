@@ -36,9 +36,6 @@ class Cell
 		bool division( void ); 
 		bool death( void ); 
 		bool movement( double dt ); 
-		
-		
-		
 };
 
 extern std::vector<Cell*> all_cells;
@@ -52,6 +49,5 @@ bool update_phenotypes( double dt );
 
 void spring_mechanics( Cell* pMe, Cell* pOther ); 
 void simple_phenotype( Cell* pMe , double dt ); 
-
 
 #endif 

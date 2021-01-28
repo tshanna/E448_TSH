@@ -41,17 +41,13 @@ Environment::~Environment()
 
 bool Environment::set_domain(double xL, double xR, double yD, double yU )
 {
-	X[0] = xL; 
 	int m = shape[0];
 	dx = (xR-xL)/(m-1.0); 
-	X[m-1] = xR; 
 	for( int k=0 ; k<m ; k++ )
 	{ X[k] = xL + dx*k; } 
 	
-	Y[0] = yD; 
 	int n = shape[1];
 	dy = (yU-yD)/(n-1.0); 
-	Y[n-1] = yU; 
 	for( int k=0 ; k<n ; k++ )
 	{ Y[k] = yD + dy*k; } 
 	
@@ -69,7 +65,6 @@ bool Environment::set_shape( std::vector<int> shape_in )
 	X.resize( m ); 
 	
 	dx = (xR-xL)/(m-1.0); 
-	std::cout << xL << " : " << dx << " : " << xR << std::endl; 
 	for( int k=0 ; k<m ; k++ )
 	{ X[k] = xL + dx*k; } 
 	
