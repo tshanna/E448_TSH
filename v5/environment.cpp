@@ -61,8 +61,6 @@ bool Environment::set_domain(double xL, double xR, double yD, double yU )
 bool Environment::set_domain( std::vector<double> bounds )
 { return set_domain( bounds[0] , bounds[1] , bounds[2] , bounds[3] ); } 
 
-bool set_dx( double dx ); 
-
 bool Environment::set_shape( std::vector<int> shape_in )
 {
 	double xL = X.front(); 

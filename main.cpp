@@ -9,7 +9,7 @@
 #include "save.h" 
 #include "environment.h" 
 
-std::string version = "v5"; 
+std::string version = "v6"; 
 
 int main( int argc, char* argv[] )
 {
@@ -35,19 +35,15 @@ int main( int argc, char* argv[] )
 	std::cout << "suggested dt: " << environment.suggest_dt() << std::endl; 
 	
 	// place cells 
+	int number_of_cells = 50; 
 	Cell* pCell;
-	pCell = new Cell; 
-	pCell->position[1] = -1; 
-	
-	pCell = new Cell; 
-	pCell->position[1] = 1; 
-	
-	pCell = new Cell; 
-	pCell->position[0] = -1; 
-
-	
-	pCell = new Cell; 
-	pCell->position[0] = 1; 
+	// random positions 
+	for( int n=0; n < number_of_cells ; n++ )
+	{
+		pCell = new Cell; 
+		pCell->position[0] = -50 + 100*uniform_random(); 
+		pCell->position[1] = -50 + 100*uniform_random(); 
+	}
 
 	long double t = 0; 
 	double max_time =  5 * 24 * 60; 
@@ -71,6 +67,8 @@ int main( int argc, char* argv[] )
 		// update environment 
 		
 		// update phenotypes
+		
+		update_phenotypes( dt ); 
 		
 		// birth and death 
 		check_for_birth_and_death( dt ); 
