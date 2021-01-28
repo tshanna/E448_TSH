@@ -27,7 +27,8 @@ int main( int argc, char* argv[] )
 	{
 		for( int i = 0 ; i < environment.shape[0] ; i++ )
 		{
-			environment(i,j) = 1.0 + 0.00001 * uniform_random(); 
+			double r2 = pow( environment.X[i] , 2 ) + pow( environment.Y[j] , 2 ) ; 
+			environment(i,j) = 1.0 - 0.8 * exp( -r2 / 3600.0 );  
 		}
 	}
 	
