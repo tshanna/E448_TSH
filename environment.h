@@ -6,6 +6,8 @@
 #include <iostream>
 #include <cmath>
 
+#include "Cell.h" 
+
 std::ostream& operator<<( std::ostream& os , const std::vector<int>& vec );
 std::ostream& operator<<( std::ostream& os , const std::vector<double>& vec );
 
@@ -25,11 +27,11 @@ class Environment
 	Environment();
 	~Environment(); 
 	
-	double& operator()(double x, double y); 
+	double& operator()( double x, double y ); 
 	double& operator()( int i, int j ); 
-	double& operator[](int k); 
+	double& operator[]( int k); 
 	
-	int get_index( double x, double y ); 
+	int get_index( double x , double y ); 
 	int get_index( int i, int j ); 
 	
 	bool set_domain(double xL, double xR, double yD, double yU ); 

@@ -31,6 +31,8 @@ Cell::Cell( Cell& copy_me )
 	max_interaction_distance = copy_me.max_interaction_distance; 
 	velocity = {0,0}; 
 	
+	uptake_rate = copy_me.uptake_rate; 
+
 	mechanics_interaction = copy_me.mechanics_interaction; 
 	phenotype_model = copy_me.phenotype_model; 
 
@@ -100,7 +102,7 @@ bool check_for_birth_and_death( double dt )
 		if( uniform_random() <= pCell->birth_rate * dt )
 		{ birth_list.push_back(pCell); }
 		
-		// death event? 
+		// death event?		
 		if( uniform_random() <= pCell->death_rate * dt )
 		{ death_list.push_back(pCell); }
 		n++; 
@@ -213,7 +215,7 @@ void simple_phenotype( Cell* pMe, double dt )
 	else
 	{
 		pMe->death_rate = 0.0; 
-		pMe->birth_rate = 0.001 * (s-threshold)/(1-threshold);  
+		pMe->birth_rate = 0.001 * (s-threshold)/(1-threshold);
 	} 
 	return; 
 }

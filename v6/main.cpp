@@ -32,8 +32,6 @@ int main( int argc, char* argv[] )
 		}
 	}
 	
-	std::cout << "suggested dt: " << environment.suggest_dt() << std::endl; 
-	
 	// place cells 
 	int number_of_cells = 50; 
 	Cell* pCell;
@@ -50,7 +48,7 @@ int main( int argc, char* argv[] )
 	double output_interval = 30; 
 	
 	double next_output_time = 0.0; 
-	double dt = 0.1; 
+	double dt = 0.05; // 0.1 
 	while( t < max_time + 0.01*dt )
 	{
 		// output? 

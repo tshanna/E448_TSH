@@ -31,7 +31,7 @@ Environment::Environment()
 	
 	// length scale = 100, 50% decay < 10 min, 90% decay < 52 min 
 	diffusion_coefficient = 1000; 
-	decay_rate = 0.1; 
+	decay_rate = 0.01* 0.1; 
 	
 	return; 
 }
@@ -83,7 +83,8 @@ bool Environment::set_shape( std::vector<int> shape_in )
 	return true;
 }
 
-double& Environment::operator()(double x, double y)
+
+double& Environment::operator()( double x , double y )
 {
 	// find nearest i
 	int i = (int) floor( (x-X.front())/dx ); 

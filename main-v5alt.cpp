@@ -7,9 +7,28 @@
 
 #include "Cell.h" 
 #include "save.h" 
-#include "environment.h" 
 
-std::string version = "v6"; 
+std::string version = "v4"; 
+
+void change_phenotypes( double t )
+{
+	static bool change_made = false; 
+	if( change_made == true )
+	{ return; } 
+	
+	if( t > 7000 )
+	{
+		for( int n = 0; n < all_cells.size() ; n++ )
+		{
+			all_cells[n]->birth_rate = 0.0; 
+			all_cells[n]->death_rate *= 10.0; 
+		}
+		
+		change_made = true; 
+	}
+	
+	return; 
+}
 
 int main( int argc, char* argv[] )
 {
@@ -21,34 +40,26 @@ int main( int argc, char* argv[] )
 	
 	// create environment 
 	
-	environment.set_domain( {-140.0,140.0,-140.0,140.0} ); 
-	environment.set_shape( {15,15} ); 
-	for( int j = 0 ; j < environment.shape[1] ; j++ )
-	{
-		for( int i = 0 ; i < environment.shape[0] ; i++ )
-		{
-			double r2 = pow( environment.X[i] , 2 ) + pow( environment.Y[j] , 2 ) ; 
-			environment(i,j) = 1.0 - 0.8 * exp( -r2 / 3600.0 );  
-		}
-	}
-	
 	// place cells 
-	int number_of_cells = 50; 
 	Cell* pCell;
-	// random positions 
-	for( int n=0; n < number_of_cells ; n++ )
-	{
-		pCell = new Cell; 
-		pCell->position[0] = -50 + 100*uniform_random(); 
-		pCell->position[1] = -50 + 100*uniform_random(); 
-	}
-
+	pCell = new Cell; 
+	pCell->position[1] = -1; 
+	
+	pCell = new Cell; 
+	pCell->position[1] = 1; 
+	
+	pCell = new Cell; 
+	pCell->position[0] = -1; 
+	
+	pCell = new Cell; 
+	pCell->position[0] = 1; 
+	
 	long double t = 0; 
-	double max_time =  5 * 24 * 60; 
+	double max_time =  10 * 24 * 60; 
 	double output_interval = 30; 
 	
 	double next_output_time = 0.0; 
-	double dt = 0.05; // 0.1 
+	double dt = 0.1; 
 	while( t < max_time + 0.01*dt )
 	{
 		// output? 
@@ -62,11 +73,9 @@ int main( int argc, char* argv[] )
 			next_output_time += output_interval; 
 		}
 		
-		// update environment 
-		
 		// update phenotypes
 		
-		update_phenotypes( dt ); 
+		change_phenotypes( t ) ; 
 		
 		// birth and death 
 		check_for_birth_and_death( dt ); 
